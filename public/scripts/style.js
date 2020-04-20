@@ -7,6 +7,13 @@ function getStyle(el, styleProp) {
   return document.defaultView.getComputedStyle(el, null)[styleProp];
 }
 
+table.onkeydown = function (evt) {
+  if (evt.which === 13) {
+    evt.preventDefault();
+    evt.target.blur();
+  }
+};
+
 table.onclick = function (evt) {
   let td = evt.target;
   let color = getStyle(evt.target, "background-color");
@@ -42,14 +49,17 @@ table.onclick = function (evt) {
     th.focus();
   } else if (td.className === "close-btn") {
     let parent = td.parentNode.parentNode;
-    // let index = parent.children.indexOf(td.parentNode);
-    var index = Array.prototype.indexOf.call(parent.children, td.parentNode);
-    parent.removeChild(parent.children[index]);
-    var e_parent = parent.parentNode;
-    for (let i = 1; i < table.children[0].children.length; i++) {
-      e_parent.children[i].removeChild(
-        e_parent.children[i].children[index - 1]
-      );
+    console.log(parent.children.length);
+    if (parent.children.length > 3) {
+      // let index = parent.children.indexOf(td.parentNode);
+      var index = Array.prototype.indexOf.call(parent.children, td.parentNode);
+      parent.removeChild(parent.children[index]);
+      var e_parent = parent.parentNode;
+      for (let i = 1; i < table.children[0].children.length; i++) {
+        e_parent.children[i].removeChild(
+          e_parent.children[i].children[index - 1]
+        );
+      }
     }
   }
 };
