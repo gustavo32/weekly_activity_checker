@@ -14,24 +14,42 @@ table.onclick = function (evt) {
     td.style.backgroundColor = "#7fcd91";
   } else if (color === "rgb(127, 205, 145)") {
     td.style.backgroundColor = "white";
-  } else if (td.className == "plus-button") {
+  } else if (
+    td.className === "plus-button" ||
+    td.className === "fa fa-plus-circle"
+  ) {
+    if (td.className === "fa fa-plus-circle") {
+      td = td.parentNode;
+    }
     let header = table.children[0].rows[0];
 
     var th = document.createElement("th");
     var text_th = document.createTextNode("New Task");
+    var close_btn = document.createElement("span");
+    close_btn.className = "close-btn";
+    close_btn.contentEditable = false;
     th.appendChild(text_th);
+    th.appendChild(close_btn);
+
     th.contentEditable = true;
 
     header.insertBefore(th, td);
-    // var el;
-    // console.log(table.children[0].children[1]);
     for (let i = 1; i < table.children[0].children.length; i++) {
       var new_td = document.createElement("td");
       var el = table.children[0].children[i];
-      console.log(el);
       el.appendChild(new_td);
-      console.log(el);
     }
     th.focus();
+  } else if (td.className === "close-btn") {
+    let parent = td.parentNode.parentNode;
+    // let index = parent.children.indexOf(td.parentNode);
+    var index = Array.prototype.indexOf.call(parent.children, td.parentNode);
+    parent.removeChild(parent.children[index]);
+    var e_parent = parent.parentNode;
+    for (let i = 1; i < table.children[0].children.length; i++) {
+      e_parent.children[i].removeChild(
+        e_parent.children[i].children[index - 1]
+      );
+    }
   }
 };

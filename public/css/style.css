@@ -67,3 +67,29 @@ html,body {
     left: -1px;
     text-align: left;
   }
+
+  .close-btn {
+    display: none;
+    transition: 0.2s;
+  }
+
+  th:hover .close-btn {
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+    right:0px;
+    padding: 0px 2px 4px 4px;
+    background-color: #d45079;
+    color: white;
+    border-radius: 0 0 0 50%;
+    line-height: 1;
+  }
+
+  .close-btn:after {
+    content: "\00d7";
+  }
+
+  .close-btn:hover {
+    cursor: pointer;
+    background-color: #ad2b53;
+  }
