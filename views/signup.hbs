@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up</title>
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+    </head>
+    <body>
+        <div class="sign-up-section">
+            {{#if errors}}
+                <div>
+                    <ul>
+                        {{#each errors}}
+                            <h6 class="tiny-text m-near">{{ this.msg }}</h6>
+                        {{/each}}
+                    </ul>
+                </div>
+            {{/if}}
+            <div>
+                <form action="/signup" method="post" accept-charset="utf-8">
+                    <h3 class="sub-title-project center">Sign Up</h3>
+                    <hr style="margin: 0px;">
+                    <h6 class="tiny-text">Username</h6>
+                    <input id="username" name="username" type="text">
+                    <h6 class="tiny-text m-08em">Password</h6>
+                    <input id="password" name="password" type="password">
+                
+                    <h6 class="tiny-text"></h6>
+                    <input type="submit" class="on-bottom button center" value="Create Account" id="submit">
+                </form>
+            </div>
+        </div>
+
+        <script type="application/javascript">
+            function setInputFilter(textbox, inputFilter) {
+                ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
+                    textbox.addEventListener(event, function() {
+                    if (inputFilter(this.value)) {
+                        this.oldValue = this.value;
+                        this.oldSelectionStart = this.selectionStart;
+                        this.oldSelectionEnd = this.selectionEnd;
+                    } else if (this.hasOwnProperty("oldValue")) {
+                        this.value = this.oldValue;
+                        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                    } else {
+                        this.value = "";
+                    }
+                    });
+                });
+            }
+
+            setInputFilter(document.getElementById("username"), function(value) {
+                return /^[A-z0-9-_@]*$/i.test(value);
+            });
+        </script>
+    </body>
+</html>

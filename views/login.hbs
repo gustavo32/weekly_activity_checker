@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Annotation Project</title>
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+    </head>
+
+    <body>
+        <div class="gray-background">
+            <div class="green-background"></div>
+            <div class="float-panel shadow-box animation-content-show-delayed"><video autoplay loop muted playsinline
+                    src="./css/spreadsheet_monster.mp4"></video></div>
+            <div class="center-left animation-content-show-delayed">
+                <h2 class="title-project">
+                    NODULES FINDER
+                </h2>
+                <h3 class="sub-title-project m-top-scaled">
+                    We need your help to annotate soybean root nodules.
+                    Do you see that little balls on the side image? That's what we need. Join us now and
+                    <a href="/signup">create an account!</a>
+                </h3>
+
+                <form action="/login" method="post" accept-charset="utf-8">
+                    <h6 class="tiny-text">Username</h6>
+                    <input type="text" placeholder="type your username" name="username" id="inputRaBox"></input>
+                    <h6 class="tiny-text m-1em">Password</h6>
+                    <input type="password" placeholder="type the password" name="password" id="password"></input>
+                    <h6 class="tiny-text m-08em"></h6>
+                    <input type="submit" class="on-bottom button" value="Submit" id="submit"></input>
+                </form>
+                {{#if errors}}
+                    <div class="error-messages">
+                        {{#each errors}}
+                            <h6 class="tiny-text m-near">{{ this.msg }}</h6>
+                        {{/each}}
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+
+        <script type="application/javascript">
+            function setInputFilter(textbox, inputFilter) {
+                ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function (event) {
+                    textbox.addEventListener(event, function () {
+                        if (inputFilter(this.value)) {
+                            this.oldValue = this.value;
+                            this.oldSelectionStart = this.selectionStart;
+                            this.oldSelectionEnd = this.selectionEnd;
+                        } else if (this.hasOwnProperty("oldValue")) {
+                            this.value = this.oldValue;
+                            this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                        } else {
+                            this.value = "";
+                        }
+                    });
+                });
+            }
+
+            setInputFilter(document.getElementById("inputRaBox"), function (value) {
+                return /^[A-z0-9-_@]*$/i.test(value);
+            });
+        </script>
+    </body>
+
+</html>

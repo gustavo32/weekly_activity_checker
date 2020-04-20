@@ -1,95 +1,295 @@
-html,body {
-    margin: 20px;
-    padding: 0;
-    height: 100%;
-  }
-  
-  body {
-    display: flex;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 90%;
-    color: #333;
-    justify-content: center;
-  }
-  
-  .table-wrapper {
-    max-width: 100%;
-    overflow: scroll;
-  }
-  
-  table {
-    position: relative;
-    border: 1px solid #ddd;
-    border-collapse: collapse;
-  }
-  
-  td, th {
-    white-space: nowrap;
-    border: 1px solid #ddd;
-    padding: 20px;
-    text-align: center;
-    transition: 0.2s;
-    background-color: white;
-  }
-  
-  th {
-    background-color: #eee;
-    position: sticky;
-    top: -1px;
-    z-index: 2;
-  }
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Raleway&display=swap");
 
-  th:first-of-type {
-    left: 0;
-    z-index: 3;
-  }
 
-  .plus-button {
-    padding-right: 50px;
-    padding-left: 50px;
-    transition: 0.2s;
-  }
+html,
+body {
+  margin: 0px;
+  height: 100%;
+}
 
-  .plus-button:hover {
-    background-color: #ccc;
-    color: #7fcd91;
-  }
 
-  .plus {
-    font-weight: 800;
-    font-size: 32px;
-    padding: -30px;
-    margin-top: -20px;
-  }
-  .header {
-    background-color: #eee;
-    position: sticky;
-    left: -1px;
-    text-align: left;
-  }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
 
-  .close-btn {
-    display: none;
-    transition: 0.2s;
-  }
+.task {
+  display: flex;
+  font-size: 90%;
+  color: #333;
+  justify-content: center;
+  background: #e8e8e8;
+}
 
-  th:hover .close-btn {
-    display: inline-block;
-    position: absolute;
-    top: 0px;
-    right:0px;
-    padding: 0px 2px 4px 4px;
-    background-color: #d45079;
-    color: white;
-    border-radius: 0 0 0 50%;
-    line-height: 1;
-  }
+.table-wrapper {
+  max-width: 100%;
+  overflow: scroll;
+}
 
-  .close-btn:after {
-    content: "\00d7";
-  }
+table {
+  position: relative;
+  border: 1px solid #5588a3;
+  border-collapse: collapse;
+}
 
-  .close-btn:hover {
-    cursor: pointer;
-    background-color: #ad2b53;
+td,
+th {
+  white-space: nowrap;
+  border: 1px solid #5588a3;
+  padding: 20px;
+  text-align: center;
+  transition: 0.2s;
+  background-color: #e8e8e8;
+  color: #e8e8e8 !important; 
+}
+
+th {
+  background-color: #145374;
+  position: sticky;
+  top: -1px;
+  z-index: 2;
+}
+
+th:first-of-type {
+  left: 0;
+  z-index: 3;
+}
+
+.plus-button {
+  padding-right: 50px;
+  padding-left: 50px;
+  transition: 0.2s;
+}
+
+.plus-button:hover {
+  background-color: #ccc;
+  color: #7fcd91;
+}
+
+.plus {
+  font-weight: 800;
+  font-size: 32px;
+  padding: -30px;
+  margin-top: -20px;
+}
+.header {
+  background-color: #145374;
+  position: sticky;
+  left: -1px;
+  text-align: left;
+}
+
+.close-btn {
+  display: none;
+  transition: 0.2s;
+}
+
+th:hover .close-btn {
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 0px 2px 4px 4px;
+  background-color: #d45079;
+  color: #e8e8e8 !important;
+  border-radius: 0 0 0 50%;
+  line-height: 1;
+}
+
+.close-btn:after {
+  content: "\00d7";
+}
+
+.close-btn:hover {
+  cursor: pointer;
+  background-color: #ad2b53;
+}
+
+@keyframes polygon-show {
+  0% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
+  100% {
+    clip-path: polygon(60% 0, 100% 0, 100% 100%, 50% 100%);
+  }
+}
+
+@keyframes content-show-delayed {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes content-show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.gray-background {
+  background-color: #e8e8e8;
+  height: 100%;
+}
+
+.green-background {
+  background-color: #145374;
+  height: 100%;
+  /* float: right; */
+  animation: 1.5s polygon-show;
+  clip-path: polygon(60% 0, 100% 0, 100% 100%, 50% 100%);
+}
+
+.float-panel {
+  position: absolute;
+  width: 55%;
+  height: 80%;
+  /* background-image: url("../img/background.jpg"); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  top: 10%;
+  right: 5%;
+}
+
+.on-bottom {
+  bottom: 10%;
+}
+
+.button {
+  border-radius: 3px;
+  border: 1px #5588a3 solid;
+  background-color: transparent;
+  padding: 0px;
+  font-size: 18px;
+  white-space: normal;
+  padding: 10px;
+  transition: 0.2s;
+}
+
+.sign-up-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.button:hover {
+  background-color: #145374;
+  color: #e8e8e8;
+}
+
+.shadow-box {
+  -webkit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.15);
+}
+
+.animation-content-show-delayed {
+  animation: 1.5s content-show-delayed;
+}
+
+.animation-content-show {
+  animation: 1.5s content-show;
+}
+
+.center-left {
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+  top: 10%;
+  left: 5%;
+  width: 30%;
+}
+
+.title-project {
+  font-size: 46px;
+  font-weight: bold;
+  margin-block-start: 0px;
+}
+
+.sub-title-project {
+  font-size: 28px;
+  font-weight: 200;
+  text-align: justify;
+}
+
+.m-top-scaled {
+  margin-top: 7.5vh;
+}
+
+.tiny-text {
+  font-size: 22px;
+  font-weight: 300;
+  margin-block-end: 0px;
+}
+
+.m-1em {
+  margin-block-start: 1em;
+}
+
+.m-08em {
+  margin-block-start: 0.8em;
+}
+
+.m-near {
+  margin-block-start: 10px;
+}
+
+.error-messages {
+  float: right;
+}
+
+input[type="text"],
+input[type="password"] {
+  min-height: 30px;
+  min-width: 60px;
+  font-size: 18px;
+  border: 1px #00334e solid;
+  border-radius: 3px;
+  text-indent: 5px;
+  letter-spacing: 1px;
+  padding: 5px;
+}
+
+input[type="button"] {
+  min-height: 30px;
+  min-width: 50px;
+  transition: linear 0.2s;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+h2,
+h3,
+h6,
+input[type="text"],
+input[type="password"],
+input[type="button"] {
+  color: #00334e;
+}
+
+h3,
+h6,
+input[type="text"],
+input[type="password"],
+input[type="button"] {
+  font-family: "Raleway", sans-serif;
+}
+
+@media screen and (max-height: 700px) {
+  .sub-title-project {
+    font-size: 22px;
+    font-weight: 200;
+    text-align: justify;
+  }
+}
