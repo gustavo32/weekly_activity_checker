@@ -28,6 +28,8 @@ html,body {
     border: 1px solid #ddd;
     padding: 20px;
     text-align: center;
+    transition: 0.2s;
+    background-color: white;
   }
   
   th {
@@ -41,7 +43,24 @@ html,body {
     left: 0;
     z-index: 3;
   }
-  
+
+  .plus-button {
+    padding-right: 50px;
+    padding-left: 50px;
+    transition: 0.2s;
+  }
+
+  .plus-button:hover {
+    background-color: #ccc;
+    color: #7fcd91;
+  }
+
+  .plus {
+    font-weight: 800;
+    font-size: 32px;
+    padding: -30px;
+    margin-top: -20px;
+  }
   .header {
     background-color: #eee;
     position: sticky;
