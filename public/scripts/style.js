@@ -26,9 +26,23 @@ function create_new_column(column_name, element_before = null) {
     return th;
 }
 
+function set_rows(value, indice) {
+    for (let i = 1; i < table.children[0].children.length; i++) {
+        console.log(table.children[0].children[i]);
+        if (value[i - 1]) {
+            table.children[0].children[i].children[
+                indice
+            ].style.backgroundColor = "#5588a3";
+        }
+    }
+}
+
 function set_initial_tasks(tasks) {
+    var i = 0;
     Object.entries(tasks[0]).forEach(([key, value]) => {
         create_new_column(key);
+        set_rows(value, i);
+        i += 1;
     });
 }
 
